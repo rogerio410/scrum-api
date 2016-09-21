@@ -119,6 +119,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
+
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10
@@ -127,3 +137,6 @@ REST_FRAMEWORK = {
 if not DEBUG:
     import dj_database_url
     DATABASES['default'] =  dj_database_url.config()
+
+    # Whitenoise: https://devcenter.heroku.com/articles/django-assets
+    STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
