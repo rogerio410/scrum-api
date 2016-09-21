@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 class Sprint(models.Model):
     """Development iteration period."""
 
-    name = models.CharField(max_length=100, blank=True, default='')
+    name = models.CharField(max_length=100, blank=True, default='teste')
     description = models.TextField(blank=True, default='')
     end = models.DateField(unique=True)
 

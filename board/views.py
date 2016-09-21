@@ -33,7 +33,7 @@ class SprintViewSet(DefaultsMixin, viewsets.ModelViewSet):
 
     queryset = Sprint.objects.order_by('end')
     serializer_class = SprintSerializer
-    search_fields = ('name',)
+    search_fields = ('name','end')
     ordering_fields = ('end', 'name',)
 
 
