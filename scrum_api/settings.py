@@ -134,7 +134,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
-if not DEBUG:
+if config('AT_HEROKU', cast=bool):
     import dj_database_url
     DATABASES['default'] =  dj_database_url.config()
 
